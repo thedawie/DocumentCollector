@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using DocumentCollector.Core.Models;
-using DocumentCollector.Core.Services;
+﻿using DocumentCollector.Core.Models;
+using DocumentCollector.Core.Interfaces;
 using DocumentCollector.Infrastructure;
 using Newtonsoft.Json;
-using Serilog;
+using Serilog; 
 
 namespace DocumentCollector
 {

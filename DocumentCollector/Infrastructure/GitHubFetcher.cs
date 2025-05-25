@@ -16,11 +16,11 @@ namespace DocumentCollector.Infrastructure
             var results = new List<(string, string)>();
             try
             {
-                var apiUrl = $"{config.DataSourceUrl}/contents/{config.FolderName}";
+                var apiUrl = $"{config.DataSourceUrl}/contents/{config.FolderName}?ref=main";
 
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("DocumentCollector", "1.0"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("token", config.Token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", config.Token);
 
                 var resp = await client.GetAsync(apiUrl);
                 if (!resp.IsSuccessStatusCode)
