@@ -15,8 +15,7 @@ namespace DocumentCollector.Infrastructure
             var results = new List<(string, string)>();
             try
             {
-                // Example: https://dev.azure.com/{organization}/{project}/_apis/git/repositories/{repoId}/items?scopePath=/docs/specs&recursionLevel=Full&api-version=7.0
-                // User must provide a full API URL in dataSourceUrl for Azure DevOps
+                // https://dev.azure.com/{organization}/{project}/_apis/git/repositories/{repoId}/items?scopePath=/docs/specs&recursionLevel=Full&api-version=7.0
                 var apiUrl = config.DataSourceUrl + "/_apis/git/repositories/" + config.ShortName + "/items?scopePath=/" + config.FolderName + "&recursionLevel=Full&api-version=7.0";
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", System.Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($":{config.Token}")));
