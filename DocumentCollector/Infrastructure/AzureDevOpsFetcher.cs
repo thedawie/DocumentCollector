@@ -15,8 +15,11 @@ namespace DocumentCollector.Infrastructure
             var results = new List<(string, string)>();
             try
             {
+                // https://dev.azure.com/thedawie/TheDawie
                 // https://dev.azure.com/{organization}/{project}/_apis/git/repositories/{repoId}/items?scopePath=/docs/specs&recursionLevel=Full&api-version=7.0
-                var apiUrl = config.DataSourceUrl + "/_apis/git/repositories/" + config.ShortName + "/items?scopePath=/" + config.FolderName + "&recursionLevel=Full&api-version=7.0";
+                // https://dev.azure.com/thedawie/TheDawie/_git/thedawie.web/branches
+
+                var apiUrl = $"{config.DataSourceUrl}/_apis/git/repositories/{config.ShortName}/items?scopePath=/{config.FolderName}&recursionLevel=Full&api-version=7.0";
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", System.Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($":{config.Token}")));
                 var resp = await client.GetAsync(apiUrl);
