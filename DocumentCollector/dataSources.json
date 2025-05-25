@@ -1,0 +1,9 @@
+[
+  {
+    "dataSourceUrl": "https://github.com/user/repo",
+    "token": "your-pat-token",
+    "folderName": "docs/specs",
+    "category": "engineering",
+    "shortName": "repo1-docs"
+  }
+]
